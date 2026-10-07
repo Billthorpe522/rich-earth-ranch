@@ -29,3 +29,10 @@ dialog p{font-size:14px;line-height:1.6;max-width:650px;min-height:3.2em}
 @media(max-width:700px){.header{gap:8px;padding-bottom:12px}.header nav{gap:8px;font-size:12px}.hero{padding-top:20px}.hero-image figcaption{font-size:9px;letter-spacing:.5px}.values .wrap{font-size:9px;letter-spacing:.5px}.values span:nth-child(odd){text-align:center;flex:1}.gallery p{font-size:15px}.gallery h3{font-size:30px}.photo img{height:auto;aspect-ratio:1/1.1}.section-heading>p{max-width:36ch}.gallery-footer{gap:10px}.contact-links strong{font-size:clamp(23px,6.7vw,29px)}dialog{padding:52px 16px 16px;max-width:94vw}dialog img{height:52dvh;max-height:52dvh}dialog p{font-size:13px}.photo-controls{gap:10px}.photo-controls button{padding:8px 11px}}
 @media(max-width:360px){.wrap{padding-left:19px;padding-right:19px}.header nav{font-size:11px}.hero h1{font-size:54px}h2{font-size:43px}.actions{gap:13px}.hero-image>img{height:370px}.contact-links strong{font-size:23px}}
 @media(prefers-reduced-motion:reduce){.photo:hover img{transform:none}}
+/* Approved ranch identity, October 2026. */
+.brand-icon{width:64px;height:64px;object-fit:contain;border-radius:50%;mix-blend-mode:multiply}
+.hero{grid-template-columns:1fr 1.25fr;gap:28px}
+.hero-logo>img{width:100%;height:auto!important;object-fit:contain;border-radius:0!important;mix-blend-mode:multiply}
+.story-photo{margin-bottom:30px}.story-photo img{width:100%;height:auto;border-radius:3px}.story-photo figcaption{font-size:11px;color:var(--muted);margin-top:10px}
+.footer-logo{width:170px;height:auto;mix-blend-mode:multiply;margin-bottom:12px}
+@media(max-width:700px){.brand-icon{width:48px;height:48px}.hero{grid-template-columns:1fr}.hero-logo{grid-row:1;margin:-6px auto 0;max-width:480px}.hero-copy .eyebrow{display:none}.hero h1{font-size:clamp(48px,13vw,65px)}.hero{gap:22px}.footer-logo{width:145px}}
