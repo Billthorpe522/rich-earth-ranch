@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://billthorpe522.github.io/rich-earth-ranch/sitemap.xml
+Sitemap: https://richearthranch.com/sitemap.xml
