@@ -60,6 +60,7 @@ function queueScroll() {
 window.addEventListener('scroll', queueScroll, {passive: true});
 window.addEventListener('resize', queueScroll);
 window.addEventListener('load', queueScroll);
+document.querySelectorAll('details').forEach(details => details.addEventListener('toggle', queueScroll));
 updateScroll();
 
 // Animate only when entering a desktop viewport. Content is always visible
@@ -92,24 +93,33 @@ if ('IntersectionObserver' in window && typeof Element.prototype.animate === 'fu
 const dialog = document.querySelector('#lightbox');
 const image = document.querySelector('#lightbox-image');
 const caption = document.querySelector('#lightbox-caption');
-const photos = [...document.querySelectorAll('[data-photo]')];
+const photoButtons = [...document.querySelectorAll('[data-photo]')];
+const photos = photoButtons.map(button => ({
+  src: button.dataset.photo,
+  alt: button.querySelector('img').alt,
+  caption: button.dataset.caption
+})).concat(JSON.parse(document.querySelector('#gallery-extras').textContent));
 const count = document.querySelector('#photo-count');
 let activePhoto = 0;
 let opener;
 function showPhoto(index) {
   activePhoto = (index + photos.length) % photos.length;
   const photo = photos[activePhoto];
-  image.src = photo.dataset.photo;
-  image.alt = photo.querySelector('img').alt;
-  caption.textContent = photo.dataset.caption;
+  image.src = photo.src;
+  image.alt = photo.alt;
+  caption.textContent = photo.caption;
   count.textContent = `${activePhoto + 1} / ${photos.length}`;
 }
-photos.forEach((button, index) => button.addEventListener('click', () => {
+function openGallery(button, index) {
   opener = button;
   showPhoto(index);
   dialog.showModal();
   document.body.classList.add('photo-open');
-}));
+}
+photoButtons.forEach((button, index) => button.addEventListener('click', () => openGallery(button, index)));
+const viewAllPhotos = document.querySelector('.gallery-view-all');
+viewAllPhotos.hidden = false;
+viewAllPhotos.addEventListener('click', () => openGallery(viewAllPhotos, 0));
 document.querySelector('#close-photo').addEventListener('click', () => dialog.close());
 document.querySelector('#previous-photo').addEventListener('click', () => showPhoto(activePhoto - 1));
 document.querySelector('#next-photo').addEventListener('click', () => showPhoto(activePhoto + 1));

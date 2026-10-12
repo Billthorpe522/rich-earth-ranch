@@ -167,3 +167,67 @@ body{font-size:16px}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}.button:hover,.button:hover span,.photo:hover img,.photo:hover span,.contact-links a:hover i{transform:none}
 }
+
+/* Compact 2026 price guide: native details keep the full list within one page. */
+.offering-list{margin:26px 0}
+.offering{padding:15px 0;border-top:1px solid #64715d;scroll-margin-top:115px}
+.offering:last-child{border-bottom:1px solid #64715d}
+.offering-heading{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.offering h3{font:29px/1.2 var(--serif)}
+.offering-price{font:24px/1.2 var(--serif);text-align:right;white-space:nowrap;color:var(--paper)}
+.offering-price small{display:block;font:11px/1.5 'DM Sans',Arial,sans-serif;color:#d4b68f;margin-top:4px}
+.offering-detail{font-size:13px;line-height:1.7;color:#d5dacd;margin-top:7px;max-width:45ch}
+.pork-grid>figure{position:static;align-self:start}
+.pork-grid>figure img{aspect-ratio:3/4;object-position:center 48%}
+.price-guide{margin-top:42px}
+.ranch-dropdown{border-top:1px solid #64715d;scroll-margin-top:115px}
+.ranch-dropdown:last-of-type{border-bottom:1px solid #64715d}
+.ranch-dropdown>summary{display:flex;justify-content:space-between;align-items:center;gap:20px;list-style:none;cursor:pointer;padding:23px 0;min-height:80px}
+.ranch-dropdown>summary::-webkit-details-marker{display:none}
+.ranch-dropdown summary strong{display:block;font:29px/1.2 var(--serif)}
+.ranch-dropdown summary small{display:block;font-size:13px;color:#d5dacd;margin-top:7px}
+.dropdown-sign{display:grid;place-items:center;width:38px;height:38px;flex-shrink:0;border:1px solid #819075;border-radius:50%;font-size:24px;line-height:1;transition:transform .2s}
+.ranch-dropdown[open]>summary .dropdown-sign{transform:rotate(45deg)}
+.dropdown-content{background:var(--paper);color:var(--ink);padding:34px 38px;margin-bottom:25px;border-radius:3px}
+.price-guide-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:30px}
+.price-guide-heading .eyebrow{margin-bottom:12px;color:var(--gold)}
+.price-guide-heading h3{font:36px/1.1 var(--serif)}
+.price-guide-heading>p{max-width:33ch;color:#596251;font-size:13px}
+.price-columns{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.price-group h4{font-size:11px;letter-spacing:1.3px;text-transform:uppercase;margin:0 0 11px;color:var(--gold)}
+.price-rows{margin:0}
+.price-rows>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;border-bottom:1px solid var(--line);padding:14px 0}
+.price-rows dt{font-size:15px;font-weight:500;line-height:1.4}
+.price-rows dt small{display:block;color:#596251;font-size:12px;font-weight:400;margin-top:4px}
+.price-rows dd{margin:0;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.price-rows dd small{font-size:12px;font-weight:400;color:#596251;margin-left:2px}
+.sausage-item{margin-bottom:20px}
+.sausage-item .price-rows>div{border-bottom:0;padding-bottom:8px}
+.flavors{font-size:13px;line-height:1.8;color:#596251;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.price-extras{margin-top:30px}
+.dropdown-content>.text-link{margin-top:25px}
+.care-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 35px;padding:0;margin:0;list-style:none;font-size:14px}
+.care-list li{position:relative;padding-left:17px}
+.care-list li::before{content:'✓';position:absolute;left:0;color:var(--gold)}
+.guide-download{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:20px;font-size:12px;color:#d5dacd}
+.guide-download .text-link{color:var(--paper);border-color:#819075}
+.file-type{font-size:10px;font-weight:400;margin-left:7px;color:#d5dacd}
+.gallery-view-all{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid currentColor;cursor:pointer;padding-left:0;padding-right:0}
+.gallery-view-all[hidden]{display:none}
+.photo img.herd-photo{object-position:center 56%}
+@media(hover:hover) and (pointer:fine){.ranch-dropdown>summary:hover .dropdown-sign{background:#f6f3e915}.ranch-dropdown>summary:hover strong{color:#d4b68f}}
+@media(max-width:1000px){.price-columns{gap:28px}.dropdown-content{padding:28px}.offering h3{font-size:26px}.offering-price{font-size:22px}}
+@media(max-width:700px){
+  .offering-heading{gap:12px}.offering h3{font-size:28px}.offering-detail{font-size:13px}
+  .offering-price{font-size:24px}.pork-grid>figure img{aspect-ratio:1/1;object-position:center 57%}
+  .price-guide{margin-top:32px}.ranch-dropdown>summary{padding:21px 0;gap:15px}
+  .ranch-dropdown summary strong{font-size:27px}.ranch-dropdown summary small{font-size:12px;max-width:26ch}
+  .dropdown-sign{width:32px;height:32px}.dropdown-content{padding:24px 18px;margin-bottom:20px}
+  .price-guide-heading{display:block;margin-bottom:25px}.price-guide-heading h3{font-size:33px}
+  .price-guide-heading>p{margin-top:15px;max-width:none;font-size:13px}
+  .price-columns{grid-template-columns:1fr;gap:28px}.price-extras{margin-top:28px}
+  .price-rows>div{gap:10px}.price-rows dt,.price-rows dd{font-size:14px}
+  .price-rows dd small{display:block;text-align:right;margin:0;line-height:1.3}
+  .care-list{grid-template-columns:1fr;gap:13px}.guide-download{align-items:flex-start;flex-direction:column;gap:8px}
+  .guide-download .text-link{font-size:12px}.file-type{display:block;margin:1px 0 0}
+}
