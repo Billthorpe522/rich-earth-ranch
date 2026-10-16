@@ -123,6 +123,37 @@ viewAllPhotos.addEventListener('click', () => openGallery(viewAllPhotos, 0));
 document.querySelector('#close-photo').addEventListener('click', () => dialog.close());
 document.querySelector('#previous-photo').addEventListener('click', () => showPhoto(activePhoto - 1));
 document.querySelector('#next-photo').addEventListener('click', () => showPhoto(activePhoto + 1));
+// A deliberate one-finger swipe on the photo moves once when released.
+// Let the browser handle vertical scrolling and pinch zoom normally.
+let photoSwipe = null;
+dialog.addEventListener('touchstart', event => {
+  photoSwipe = null;
+  if (event.touches.length !== 1 || event.target !== image || (window.visualViewport?.scale ?? 1) > 1.05) return;
+  const touch = event.touches[0];
+  photoSwipe = {id: touch.identifier, x: touch.clientX, y: touch.clientY};
+}, {passive: true});
+dialog.addEventListener('touchmove', event => {
+  if (!photoSwipe) return;
+  const touch = event.touches[0];
+  if (event.touches.length !== 1 || touch.identifier !== photoSwipe.id || (window.visualViewport?.scale ?? 1) > 1.05) {
+    photoSwipe = null;
+    return;
+  }
+  const dx = Math.abs(touch.clientX - photoSwipe.x);
+  const dy = Math.abs(touch.clientY - photoSwipe.y);
+  if (dy > 10 && dy > dx) photoSwipe = null;
+}, {passive: true});
+dialog.addEventListener('touchend', event => {
+  const swipe = photoSwipe;
+  photoSwipe = null;
+  if (!swipe || event.touches.length || (window.visualViewport?.scale ?? 1) > 1.05) return;
+  const touch = [...event.changedTouches].find(point => point.identifier === swipe.id);
+  if (!touch) return;
+  const dx = touch.clientX - swipe.x;
+  const dy = touch.clientY - swipe.y;
+  if (Math.abs(dx) >= 50 && Math.abs(dx) > Math.abs(dy) * 1.4) showPhoto(activePhoto + (dx < 0 ? 1 : -1));
+}, {passive: true});
+dialog.addEventListener('touchcancel', () => { photoSwipe = null; }, {passive: true});
 dialog.addEventListener('keydown', event => {
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
     event.preventDefault();
@@ -130,6 +161,7 @@ dialog.addEventListener('keydown', event => {
   }
 });
 dialog.addEventListener('close', () => {
+  photoSwipe = null;
   document.body.classList.remove('photo-open');
   opener?.focus({ preventScroll: true });
 });
